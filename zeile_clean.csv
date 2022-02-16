@@ -1,4 +1,4 @@
-zeile_no,amount_including_vat,amount,expected_receipt_date,location_code,order_date,quantity_invoiced,quantity_received,quantity,really_receipt_datetime,requested_receipt_date
+purchase_no,amount_including_vat,amount,expected_receipt_date,location_code,order_date,quantity_invoiced,quantity_received,quantity,really_receipt_datetime,requested_receipt_date
 MS00203015,10973.75,9460.13,2020-10-09,B-01,2020-02-07,1250,1250,1250,2021-07-22,2020-10-09
 MS00203015,11257.55,9460.13,2021-12-03,B-01,2019-09-24,1250,1250,1250,2021-07-22,2021-03-15
 DA00114007,9814.21,8247.23,2021-06-08,B-01,2021-06-08,2415,2415,2415,2021-07-22,2021-06-08

@@ -1,4 +1,4 @@
-lieferzeile_no,order_no,buy_from_city,buy_from_post_code,buy_from_vendor_name,location_code,order_date,original_date,posting_date,promised_receipt_date,quantity_invoiced,quantity,really_receipt_datetime,requested_receipt_date
+delivery_no,order_no,buy_from_city,buy_from_post_code,buy_from_vendor_name,location_code,order_date,original_date,posting_date,promised_receipt_date,quantity_invoiced,quantity,really_receipt_datetime,requested_receipt_date
 00451185,EB19/2893,Altena-Dahle,58754,Möhling GmbH & Co. KG,B-01,2019-09-23,2019-12-17,2019-12-30,2019-12-17,22730,22730,2019-12-16,2019-12-17
 17000040,EB19/3532,Mörfelden-Walldorf,64546,RS Components GmbH,B-01,2019-11-15,2019-12-17,2019-12-30,2019-12-17,15,15,1753-01-01,2019-12-17
 KS00520714,EB19/3570,Carei Jud. Satu Mare,RO - 445100,Taygan Metal Press SRL,B-01,2019-12-19,2019-12-19,2019-12-30,2019-12-19,2000,2000,1753-01-01,2019-12-19
