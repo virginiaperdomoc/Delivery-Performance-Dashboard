@@ -5,7 +5,8 @@ SELECT vendors.search_name AS vendors, deliveries.order_no AS order_no, deliveri
 FROM vendors
 JOIN deliveries 
 ON vendors.search_name=deliveries.vendor_name
-WHERE deliveries.promised_date NOT LIKE '2033%')
+WHERE deliveries.promised_date NOT LIKE '2033%'
+AND deliveries.promised_date NOT LIKE '2099%')
 
 -- calculate average variance per provider, per year, per mnth
 SELECT vendors, SUBSTR(promised_date, 1, 4) AS yr, SUBSTR(promised_date, 6, 2) AS mnth, ROUND(AVG(DATEDIFF(promised_date, delivery_date))) AS avg_variance

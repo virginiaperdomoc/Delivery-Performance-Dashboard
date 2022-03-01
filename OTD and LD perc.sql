@@ -12,27 +12,26 @@ CREATE TEMPORARY TABLE delivery_timing (
     order_no TEXT NOT NULL,
     promised_date DATE NOT NULL,
     delivery_date DATE NOT NULL,
-    days_variance INTEGER,
-    yr TEXT,
-    mnth TEXT
+    days_variance INT
 );
-	
+
 -- 2. populate dates from deliveries table
 INSERT INTO delivery_timing(order_no, promised_date, delivery_date)
 SELECT order_no, promised_date, delivery_date
 FROM deliveries
-WHERE promised_date NOT LIKE '2033%';
+WHERE promised_date NOT LIKE '2033%'
+AND promised_date NOT LIKE '2099%';
 
--- 3. populate days_variance
-UPDATE delivery_timing 
-SET 
-    days_variance = DATEDIFF(promised_date, delivery_date);
 
--- 4. populate yr and mnth
+-- 3. check if delivery dates include weekends
+SELECT promised_date, dayname(promised_date), delivery_date, dayname(delivery_date)
+FROM delivery_timing;
+--  as we can see, deliveries are being made during the weekends as well, meaning that we need to count calendar days. 
+
+
+-- 4. populate days_variance
 UPDATE delivery_timing 
-SET yr = SUBSTR(promised_date, 1, 4);
-UPDATE delivery_timing 
-SET mnth = SUBSTR(promised_date, 6, 2);
+SET days_variance = DATEDIFF(promised_date, delivery_date);
 
 
 -- On-Time Delivery (OTD) and Late Delivery (LD) rates in %
@@ -45,7 +44,7 @@ SELECT
 FROM
     delivery_timing
 GROUP BY order_no , promised_date;
--- Because some orders have been divided into several shipments, we're going to treat each row as a distinct order
+-- Because some orders have been divided into several shipments, for this particular KPI, we're going to treat each row as a distinct order
 
 SELECT 
     COUNT(*) AS total_orders,
