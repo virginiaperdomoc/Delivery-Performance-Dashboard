@@ -3,18 +3,17 @@ SET SQL_SAFE_UPDATES = 0;
 
 
 SELECT DISTINCT country 
-FROM deliveries, cities
-WHERE deliveries.vendor_city=cities.city;
+FROM deliveries;
 
-ALTER TABLE cities
+ALTER TABLE deliveries
 ADD COLUMN region TEXT AFTER country;
 
-UPDATE cities
+UPDATE deliveries
 SET region = CASE 
                 WHEN country='Germany' THEN 'Germany'
-                WHEN country='Japan' THEN 'Asia'
+                WHEN country IN ('China','Japan') THEN 'Asia'
                 WHEN country IN ('Canada', 'United States') THEN 'North America'
-                WHEN country IN ('Austria', 'Belgium','Czechia','Poland','Portugal', 'Switzerland') THEN 'Europe'
+                WHEN country IN ('Italy', 'Austria', 'Belgium','Czechia','Poland','Portugal', 'Spain', 'Switzerland', 'Hungary') THEN 'Europe'
               END;
 
 ALTER TABLE deliveries
@@ -34,10 +33,6 @@ SET otd_ld = CASE
 
 SELECT * FROM deliveries;
 
-SELECT vendor_no, vendor_name, vendor_city, country, region, order_no, delivery_no, order_date, 
-posting_date promised_date, delivery_date, days_variance, otd_ld
-FROM deliveries, cities
-WHERE deliveries.vendor_city=cities.city
-AND delivery_date < '2022-02-20'
-AND order_date < delivery_date
-AND order_date < promised_date;
+SELECT vendor_no, vendor_name, city, country, region, order_no, delivery_no, order_date, 
+posting_date, promised_date, delivery_date, days_variance, otd_ld
+FROM deliveries;
