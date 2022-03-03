@@ -13,7 +13,7 @@ SET region = CASE
                 WHEN country='Germany' THEN 'Germany'
                 WHEN country IN ('China','Japan') THEN 'Asia'
                 WHEN country IN ('Canada', 'United States') THEN 'North America'
-                WHEN country IN ('Italy', 'Austria', 'Belgium','Czechia','Poland','Portugal', 'Spain', 'Switzerland', 'Hungary') THEN 'Europe'
+                WHEN country IN ('Austria', 'Belgium','Czechia','France','Hungary','Italy', 'Netherlands','Poland','Portugal', 'Romania','Spain', 'Switzerland') THEN 'Europe'
               END;
 
 ALTER TABLE deliveries
