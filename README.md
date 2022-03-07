@@ -39,4 +39,3 @@ All the results from the SQL analysis are presented in visualizations and a dash
 ## Legal Terms
 
 All data has been used only for educational purpose.
----
