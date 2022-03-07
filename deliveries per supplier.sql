@@ -7,19 +7,19 @@
 -- ON vendors.search_name=deliveries.vendor_name AND deliveries.promised_date NOT LIKE '2033%')
 
 SELECT * FROM deliveries;
--- calculate number of distinct orders delivered per vendor, per year, per mnth
-SELECT vendor_name, SUBSTR(delivery_date, 1, 4) AS yr, SUBSTR(delivery_date, 6, 2) AS mnth, COUNT(DISTINCT order_no) AS orders_delivered
+-- calculate number of deliveries per vendor, per year, per mnth
+SELECT vendor_name, YEAR(delivery_date) AS yr, MONTH(delivery_date) AS mnth, COUNT(*) AS deliveries
 FROM deliveries
 GROUP BY vendor_name, yr, mnth
 ORDER BY yr, mnth;
 
--- calculate number of orders delivered per vendor
-SELECT vendor_name, COUNT(DISTINCT order_no) AS orders_delivered
+-- calculate number of deliveries per vendor
+SELECT vendor_name, COUNT(*) AS deliveries
 FROM deliveries
 GROUP BY vendor_name;
 
 -- calculate number of distinct orders delivered per vendor, per year
-SELECT vendor_name, SUBSTR(delivery_date, 1, 4) AS yr, COUNT(DISTINCT order_no) AS orders_delivered
+SELECT vendor_name, YEAR(delivery_date) AS yr, COUNT(*) AS deliveries
 FROM deliveries
 GROUP BY vendor_name, yr
 ORDER BY yr;

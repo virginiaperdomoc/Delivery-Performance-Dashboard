@@ -13,8 +13,7 @@ AND table_name = 'geo_delivery';
 CREATE TEMPORARY TABLE geo_delivery (
     order_no TEXT,
     vendor_name TEXT,
-    city TEXT,
-    promised_date DATE NOT NULL,
+    state TEXT,
     delivery_date DATE NOT NULL,
     days_variance INTEGER,
     country TEXT,
@@ -22,36 +21,25 @@ CREATE TEMPORARY TABLE geo_delivery (
     mnth TEXT
 );
 	
--- 2. populate dates from deliveries table
-INSERT INTO geo_delivery(order_no, vendor_name, city, promised_date, delivery_date, days_variance, country)
-SELECT order_no, vendor_name, city, promised_date, delivery_date, days_variance, country
+-- 2. populate table
+INSERT INTO geo_delivery(order_no, vendor_name, state, delivery_date, days_variance, country)
+SELECT order_no, vendor_name, state, delivery_date, days_variance, country
 FROM deliveries;
 
 SELECT * FROM geo_delivery;
 
 -- 3. populate yr and mnth
 UPDATE geo_delivery 
-SET yr = SUBSTR(promised_date, 1, 4);
+SET yr = YEAR(delivery_date);
 UPDATE geo_delivery 
-SET mnth = SUBSTR(promised_date, 6, 2);
+SET mnth = MONTH(delivery_date);
 
-
-
-
--- average day variance in Germany, per city
-SELECT city, ROUND(AVG(days_variance)) AS avg_variance
+-- average day variance in Germany, per state
+SELECT state, ROUND(AVG(days_variance)) AS avg_variance
 FROM geo_delivery
-WHERE country='Germany'
-GROUP BY city;
+GROUP BY state;
 
--- average day variance in other countries
-SELECT country, ROUND(AVG(days_variance)) AS avg_variance
+-- average day variance per yr
+SELECT state, yr, ROUND(AVG(days_variance)) AS avg_variance
 FROM geo_delivery
-WHERE country!='Germany'
-GROUP BY country;
-
--- average day variance in Germany, per yr
-SELECT yr, ROUND(AVG(days_variance)) AS avg_variance
-FROM geo_delivery
-WHERE country='Germany'
-GROUP BY yr;
+GROUP BY state, yr;
