@@ -18,9 +18,8 @@ During the wrangling process, we identified that some features that would enrich
 For a step-by-step overview of the data wrangling process, please refer to the corresponding Jupyter notebook, where you will find the code and comments. We will only include the final csv file with the clean data, not the original dataset.
   
 ## Additional data sources
-The additional datasets were downloaded from here:  
-<br>● The worldcities dataset was downloaded from [SimpleMaps](https://simplemaps.com/data/world-cities)  
-<br>● The German postcodes dataset was downloaded from [Zauberware's GitHub](https://github.com/zauberware/postal-codes-json-xml-csv/blob/master/data/DE.zip).
+
+The German postcodes dataset was downloaded from [Zauberware's GitHub](https://github.com/zauberware/postal-codes-json-xml-csv/blob/master/data/DE.zip).
 
 ## MySQL Workbench
 
@@ -38,4 +37,4 @@ All the results from the SQL analysis are presented in visualizations and a dash
 
 ## Legal Terms
 
-All data has been used only for educational purpose.
+All data has been used for educational purpose only.
