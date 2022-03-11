@@ -14,6 +14,8 @@ In this project, we use the following methods:
 
 ## Data wrangling
 
+The original dataset had 166 columns, from which we narrowed it down to twelve. First we dropped those columns where most cells had NaN values. Secondly, we did some research about the Microsoft Dynamics NAV and selected the ones we thought were relevant to our question.
+
 During the wrangling process, we identified that some features that would enrich our analysis were missing. For example, in order to produce a map illustrating the deliveries, the latitudes and longitudes were necessary.
 
 For a step-by-step overview of the data wrangling process, please refer to the corresponding Jupyter notebook, where you will find the code and comments. We will only include the final csv file with the clean data, not the original dataset.
